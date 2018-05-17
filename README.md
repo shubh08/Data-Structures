@@ -1,2 +1,2 @@
 # Data-Structures
-Solutions to the some important and intersting problems of the Data Structures & Algorithms
+Solutions to the some important and interesting problems of the Data Structures & Algorithms
