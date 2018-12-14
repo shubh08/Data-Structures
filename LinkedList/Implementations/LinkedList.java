@@ -47,10 +47,29 @@ public class LinkedList {
 	}
 
 	// Removing element
-	public void remove (int data)
+	public void remove (int dataTodelete)
 	{
+		if (root == null)
+			return;
 	
-		
+		if (root.data == dataTodelete)
+			root = root.next;
+		else
+			removeElement(dataTodelete,root,root.next);
+	}
+
+	private void removeElement(int dataTodelete, Node prevNode, Node actualNode) {
+			while(actualNode!=null)
+			{
+				if(actualNode.data == dataTodelete)
+				{
+					prevNode.next = actualNode.next;
+					actualNode = null;
+				}
+				
+				prevNode = actualNode;
+				actualNode = actualNode.next;
+			}
 	}
 	
 	
