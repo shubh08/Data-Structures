@@ -65,6 +65,7 @@ public class LinkedList {
 				{
 					prevNode.next = actualNode.next;
 					actualNode = null;
+					return;
 				}
 				
 				prevNode = actualNode;

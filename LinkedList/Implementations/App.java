@@ -9,5 +9,7 @@ public static void main(String[] args) {
 	linkedList.add(2);
 	linkedList.add(1);
 	linkedList.traversePrint();
+	linkedList.remove(4);
+	linkedList.traversePrint();
 }
 }
