@@ -9,10 +9,10 @@ class gfg
         Node dummy = null;
         while(head!=null)
         {
-            temp = head;
-            head = head.next;
-            temp.next = dummy;
-            dummy = temp;
+            temp = head; // take copy of the current node
+            head = head.next; // Move the header to next node;
+            temp.next = dummy; // assign the next of the current node to dummy
+            dummy = temp; // reassign the dummy to store the current node for next traversal move
             
         }
         return dummy;
