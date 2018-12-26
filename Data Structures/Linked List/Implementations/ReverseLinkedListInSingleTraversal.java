@@ -4,7 +4,7 @@ class gfg
    // head of the modified linked list.
    Node reverse(Node head)
    {
-        // add code here
+        
         Node temp = null;
         Node dummy = null;
         while(head!=null)
