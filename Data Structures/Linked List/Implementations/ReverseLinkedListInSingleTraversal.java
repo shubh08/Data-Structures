@@ -5,7 +5,7 @@ class gfg
    Node reverse(Node head)
    {
         
-        Node temp = null;
+        Node temp = null; //Initialize temp and dummy node to null
         Node dummy = null;
         while(head!=null)
         {
