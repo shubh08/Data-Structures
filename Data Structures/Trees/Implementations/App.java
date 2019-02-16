@@ -13,6 +13,7 @@ public class App {
 		System.out.println("The min element is "+bst.getMin());
 
 		System.out.println("The max element is "+bst.getMax());
+		bst.traverse();
 	}
 	
 

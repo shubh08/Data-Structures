@@ -6,9 +6,6 @@ public class BinarySearchTree {
 
 	public void insert(int data) {
 
-		
-		
-		
 		if (rootNode == null) {
 			rootNode = new Node(data);
 		} else
@@ -16,41 +13,58 @@ public class BinarySearchTree {
 
 	}
 	
-	public int getMin(){
-		if (rootNode==null)
+	public void traverse()
+	{
+		if(rootNode!=null)
+		{
+			inOrderTraversal(rootNode);
+		}
+	}
+
+	private void inOrderTraversal(Node node) {
+
+		if(node.getLeftChild()!=null)
+			inOrderTraversal(node.getLeftChild());
+		System.out.print(node.getData()+"-->");
+		if(node.getRightChild()!=null)
+			inOrderTraversal(node.getRightChild());
+		
+	}
+
+	public int getMin() {
+		if (rootNode == null)
 			return -1;
 		else
 			return getMinNode(rootNode);
-		
+
 	}
-	
-	public int getMax(){
-		if (rootNode==null)
+
+	public int getMax() {
+		if (rootNode == null)
 			return -1;
 		else
 			return getMaxNode(rootNode);
-		
+
 	}
-	
+
 	private int getMinNode(Node node) {
-		if(node.getLeftChild()!=null)
+		if (node.getLeftChild() != null)
 			return getMinNode(node.getLeftChild());
-		
+
 		return node.getData();
 	}
 
-
 	private int getMaxNode(Node node) {
-		if(node.getRightChild()!=null)
+		if (node.getRightChild() != null)
 			return getMaxNode(node.getRightChild());
-		
+
 		return node.getData();
 	}
 
 	public void insertNode(int newData, Node Node)
 
 	{
-		if (newData<Node.getData()) {
+		if (newData < Node.getData()) {
 			if (Node.getLeftChild() != null)
 				insertNode(newData, Node.getLeftChild());
 			else {
