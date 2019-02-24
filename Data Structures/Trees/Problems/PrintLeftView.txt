@@ -1,0 +1,26 @@
+class GfG
+{
+    static int max_level =0;
+    void leftView(Node root)
+    {
+     if (root!=null)
+     printLeftView(root, 1);
+    }
+    // GFG
+    private void printLeftView(Node node, int level)
+    {
+        if (node==null)
+        return;
+        
+        if(level>max_level)
+        {
+            System.out.println(node.data+" ");
+            max_level = level;
+        }
+        
+        printLeftView(node.left,level+1);
+        
+        printLeftView(node.right,level+1);
+    }
+        
+    }
