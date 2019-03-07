@@ -9,13 +9,17 @@ public class App {
 		bst.insert(15);
 		bst.insert(3);
 		bst.insert(7);
-		
+		bst.insert(8);
+		bst.insert(9);
 		System.out.println("The min element is "+bst.getMin());
 
 		System.out.println("The max element is "+bst.getMax());
-		bst.traverse();
+		bst.levelOrder();
+		/*bst.traverse();
 		bst.delete(10);
-		bst.traverse();
+		bst.traverse();*/
+		bst.leftView();
+		bst.printSprialOrder();
 	}
 	
 

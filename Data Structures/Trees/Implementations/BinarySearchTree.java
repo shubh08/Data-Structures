@@ -1,8 +1,18 @@
 package com.shubh.bst;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Queue;
+import java.util.Stack;
+
 public class BinarySearchTree {
 
 	private Node rootNode;
+
+	int maxlevel = 0;
 
 	public void insert(int data) {
 
@@ -143,6 +153,27 @@ public class BinarySearchTree {
 		return node;
 	}
 
+	public void leftView() {
+		if (rootNode != null) {
+			printLeftView(rootNode, 1);
+		}
+
+	}
+
+	private void printLeftView(Node node, int level) {
+
+		if (node == null)
+			return;
+		if (level > maxlevel) {
+			System.out.println(node.getData() + " ");
+			maxlevel = level;
+		}
+
+		printLeftView(node.getLeftChild(), level + 1);
+		printLeftView(node.getRightChild(), level + 1);
+
+	}
+
 	private Node getPredecessor(Node node) {
 		// TODO Auto-generated method stub
 
@@ -151,4 +182,115 @@ public class BinarySearchTree {
 		return node;
 	}
 
+	public void levelOrder() {
+
+		if (rootNode != null)
+			printLevelOrderTraversal(rootNode);
+	}
+
+	private void printLevelOrderTraversal(Node node) {
+
+		Queue<Node> queue = new LinkedList<>();
+		queue.add(node);
+
+		while (!queue.isEmpty()) {
+			Node tempNode = queue.poll();
+			System.out.print(tempNode.getData() + " ");
+			if (tempNode.getLeftChild() != null)
+				queue.add(tempNode.getLeftChild());
+			if (tempNode.getRightChild() != null)
+				queue.add(tempNode.getRightChild());
+
+		}
+
+	}
+
+	public void printVerticalOrder() {
+
+		if (rootNode != null)
+			printVerticalOrderNodes(rootNode);
+
+	}
+
+	private List<List<Integer>> printVerticalOrderNodes(Node node) {
+		// TODO Auto-generated method stub
+		List<List<Integer>> result = new ArrayList<>();
+		int min_level = 0, max_level = 0;
+		Map<Integer, ArrayList<Integer>> map = new HashMap<>();
+		// java.util.List<Integer> level = new ArrayList<>();
+		Queue<Integer> level = new LinkedList<>();
+		Queue<Node> queue = new LinkedList<>();
+		queue.add(node);
+		level.add(0);
+		while (!queue.isEmpty()) {
+			Node nodeRemoved = queue.poll();
+			int levelRetrieved = level.poll();
+			min_level = Math.min(min_level, levelRetrieved);
+			max_level = Math.max(max_level, levelRetrieved);
+
+			if (map.containsKey(levelRetrieved)) {
+				map.get(levelRetrieved).add(nodeRemoved.getData());
+			} else {
+				ArrayList<Integer> arrayList = new ArrayList<>();
+				arrayList.add(nodeRemoved.getData());
+				map.put(levelRetrieved, arrayList);
+			}
+			if (nodeRemoved.getLeftChild() != null) {
+				queue.add(nodeRemoved.getLeftChild());
+				level.add(levelRetrieved - 1);
+			}
+
+			if (nodeRemoved.getRightChild() != null) {
+				queue.add(nodeRemoved.getRightChild());
+				level.add(levelRetrieved + 1);
+			}
+
+		}
+
+		for (int i = min_level; i <= max_level; i++) {
+			if (map.containsKey(i)) {
+				result.add(map.get(i));
+			}
+		}
+
+		return result;
+
+	}
+
+	public void printSprialOrder(){
+		
+		
+		Stack<Node> s1 = new Stack<>();
+		Stack<Node> s2 = new Stack<>();
+		s1.push(rootNode);
+		boolean doIteration = true;
+		while(doIteration){
+			while(!s1.isEmpty())
+			{
+				Node tempNode= s1.pop();
+				System.out.print(tempNode.getData()+" ");
+				if(tempNode.getRightChild()!=null)
+					s2.push(tempNode.getRightChild());
+				if(tempNode.getLeftChild()!=null)
+					s2.push(tempNode.getLeftChild());
+			}
+			doIteration = false;
+			while(!s2.isEmpty())
+			{
+				Node tempNode= s2.pop();
+				System.out.print(tempNode.getData()+" ");
+				if(tempNode.getLeftChild()!=null)
+					{s1.push(tempNode.getLeftChild());
+					doIteration=true;}
+				if(tempNode.getRightChild()!=null)
+					{s1.push(tempNode.getRightChild());
+					doIteration = true;}
+								
+			}
+		}
+		
+		
+		
+	}
+	
 }
