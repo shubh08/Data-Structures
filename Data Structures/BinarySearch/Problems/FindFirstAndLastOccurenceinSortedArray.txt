@@ -1,0 +1,37 @@
+class Solution {
+    
+    public int searchFirstOccurence(int nums[],int l, int r, int x)
+    {
+        if(l>r)
+            return -1;
+        int mid = l + (r-l)/2;
+        if(nums[mid]==x && (mid==0 || nums[mid-1]!=nums[mid]))
+            return mid;
+        else if(nums[mid]>=x)
+            return searchFirstOccurence(nums,l,mid-1,x);
+            
+           else 
+            return  searchFirstOccurence(nums,mid+1,r,x);
+    
+    }
+    
+    public int searchLastOccurence(int nums[],int l, int r, int x)
+    {
+        if(l>r)
+            return -1;
+        int mid = l + (r-l)/2;
+        if(nums[mid]==x && (mid==nums.length-1 || nums[mid+1]!=nums[mid]))
+            return mid;
+        else if(nums[mid]<=x)
+            return searchLastOccurence(nums,mid+1,r,x);
+           else
+            return searchLastOccurence(nums,l,mid-1,x);
+    }
+    
+    public int[] searchRange(int[] nums, int target) {
+        int targetArr [] = new int [2];
+        targetArr[0]=searchFirstOccurence(nums,0,nums.length-1,target);
+        targetArr[1]=searchLastOccurence(nums,0,nums.length-1,target);
+        return targetArr;
+    }
+}
