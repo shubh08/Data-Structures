@@ -4,7 +4,7 @@ public class TerarySearch {
 	
 	public static void ternarySearch(int arr[], int l, int r, int x )
 	{
-		while(l<=r)
+		if(l<=r)
 		{
 			int mid1 = l + (r-l)/3;
 			int mid2 = r - (r-l)/3;
@@ -26,13 +26,15 @@ public class TerarySearch {
 			}
 		}
 		
+		System.out.println("Element not found");
+		
 	}
 
 	public static void main(String[] args) {
 		
-		int arr [] = {10,23,89,123,76,34,90,190};
+		int arr [] = {10,23,89,90,100,110,140,200};
 		
-		ternarySearch(arr, 0, arr.length -1, 90);
+		ternarySearch(arr, 0, arr.length-1, 90);
 
 	}
 
