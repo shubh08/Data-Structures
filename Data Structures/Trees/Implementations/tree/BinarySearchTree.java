@@ -1,5 +1,7 @@
 package com.shubh.tree;
 
+import java.util.Stack;
+
 public class BinarySearchTree {
 
 	class Node {
@@ -71,6 +73,38 @@ public class BinarySearchTree {
 
 	}
 
+	public void inOrderIterative() {
+		inOrderTraversalIterative(root);
+
+	}
+
+	private void inOrderTraversalIterative(Node root) {
+		
+		Stack<Node> st = new Stack<>();
+		System.out.println("\nIterative InOrder Traversal!");
+		
+		while(true)
+		{
+			while(root!=null)
+			{
+				st.push(root);
+				root = root.left;				
+			}
+			
+			
+			
+			if(st.isEmpty()) break;
+			
+			root = st.pop();
+			System.out.print(root.data+"--->");
+			root = root.right;
+			
+		}
+		
+
+	}
+	
+	
 	public void postOrder() {
 		postOrderTraversal(root);
 
@@ -93,8 +127,9 @@ public class BinarySearchTree {
 		tree.insert(70);
 		tree.insert(60);
 		tree.insert(80);
-		System.out.println("In Order Traversal!!");
+		System.out.println("In Order Traversal !!");
 		tree.inOrder();
+		tree.inOrderIterative();
 		System.out.println("\n Deleting 20 ");
 		tree.deleteRec(20);
 		System.out.println("In Order Traversal!!");
