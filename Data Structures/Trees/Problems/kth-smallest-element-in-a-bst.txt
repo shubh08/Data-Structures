@@ -1,0 +1,23 @@
+public int kthSmallest(TreeNode root, int k) {
+        TreeNode temp = root;
+        Stack<TreeNode> st = new Stack<>();
+        
+        while(true)
+        {
+            while(temp!=null)
+            {
+                st.push(temp);
+                temp = temp.left;
+            }
+            
+            if(st.isEmpty())
+                break;
+            k--;
+            temp = st.pop();
+            if(k==0) return temp.val;
+            temp = temp.right;
+            
+        }
+        
+        return 0;
+    }
