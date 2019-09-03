@@ -1,0 +1,31 @@
+class Solution {
+    public Node connect(Node root) {
+        if(root==null) return root;
+        Node tempRoot = root;
+        Queue<Node> qu = new LinkedList<>();
+        qu.add(root);
+        qu.add(null);
+        
+        while(!qu.isEmpty())
+        {
+            Node temp = qu.remove();
+            
+            if(temp!=null)
+            {
+                temp.next = qu.peek();
+                
+                if(temp.left!=null)
+                    qu.add(temp.left);
+                if(temp.right!=null)
+                    qu.add(temp.right);
+                
+            }
+            
+            else if(!qu.isEmpty())
+                qu.add(null);
+        
+        }
+        
+       return tempRoot;     
+    }
+}
